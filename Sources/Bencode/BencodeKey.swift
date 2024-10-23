@@ -20,6 +20,10 @@ public struct BencodeKey {
     }
 }
 
+#if swift(>=6.0)
+extension BencodeKey: Sendable {}
+#endif
+
 extension BencodeKey: Hashable {
     
     public static func ==(lhs: BencodeKey, rhs: BencodeKey) -> Bool {

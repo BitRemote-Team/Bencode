@@ -16,6 +16,10 @@ public enum Bencode {
     indirect case dictionary([BencodeKey:Bencode])
 }
 
+#if swift(>=6.0)
+extension Bencode: Sendable {}
+#endif
+
 public extension Bencode {
     
     /** Decoding from Bencoded string */
