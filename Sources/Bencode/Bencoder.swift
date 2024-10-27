@@ -47,7 +47,7 @@ final public class Bencoder {
     public func encoded(bencode: Bencode) -> String {
         switch bencode {
         case .integer(let i): return "i\(i)e"
-        case .string(let b): return "\(b.count):\(String(bytes: b, encoding: .ascii)!)"
+        case .string(let b): return "\(b.count):\(b.reduce(into: "", { $0.append(Character(UnicodeScalar($1))) }))"
         case .list(let l):
             let desc = l.map { $0.encoded }.joined()
             return "l\(desc)e"

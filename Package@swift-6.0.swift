@@ -1,4 +1,4 @@
-// swift-tools-version:5.10
+// swift-tools-version:6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -16,6 +16,11 @@ let package = Package(
         .library(name: "Bencode", targets: ["Bencode"])
     ],
     targets: [
-        .target(name: "Bencode", dependencies: [])
+        .target(name: "Bencode", dependencies: []),
+        .testTarget(
+            name: "DecodeTests",
+            dependencies: ["Bencode"],
+            resources: [.process("sample.torrent")]
+        ),
     ]
 )
